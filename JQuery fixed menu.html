@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JQuery fixed menu</title>
+<meta name="title" content="">
+<meta name="Description" content="">
+<meta name="Keywords" content="">
+<link rel="image_src" href="">
+<meta property="og:title" content="">
+<meta property="og:url" content="">
+<meta property="og:image" content="">
+<meta property="og:description" content="">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><!--icon font-->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]--> 
+<style>
+html,body{ margin: 0; padding: 0 }
+header{ height: 80px; background: #ccc; }
+.nav{ background: #eee; padding: 20px; }
+.scrollFixed{ width: 100%; position: fixed; top:0; left: 0; }
+.fixedWrap{ overflow: hidden; }
+
+/*@media screen and (max-width: 990px){
+	.scrollFixed{ position: static !important;  }
+	.fixedWrap{ min-height: inherit !important; }
+}*/
+
+</style>
+</head>
+<body style="height:4000px;">
+
+<header>Header</header>
+<div class="fixedWrap">
+	<nav class="nav fixedContent">
+		<a href="#">Item</a>
+		<a href="#">Item</a>
+		<a href="#">Item</a>
+		<a href="#">Item</a>
+		<a href="#">Item</a>
+		<a href="#">Item</a>
+	</nav>
+</div>
+<p>Text</p>
+
+
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(function(){
+	var	$fixedWrap =$(".fixedWrap");
+	if($fixedWrap.length > 0){
+		$fixedWrap.each(function() {
+			var $this = $(this);
+			var $fixedContent = $this.find(".fixedContent");
+			var _top = $this.offset().top;
+			$this.css("min-height",$this.height()) 
+			$(window).scroll(function() {
+				if($(this).scrollTop() >= _top){
+					$fixedContent.addClass('scrollFixed');
+				}else{
+					$fixedContent.removeClass('scrollFixed');
+				}
+			});	
+		});	
+	}
+});
+</script>
+</body>
+</html>
